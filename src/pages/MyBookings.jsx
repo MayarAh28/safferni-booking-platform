@@ -34,8 +34,7 @@ import {
 
 import WhiteBackground from "/WhiteBackground.jpg";
 
-const API_BASE_URL =
-  import.meta.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 const API_MY_BOOKINGS_URL = `${API_BASE_URL}/me/`;
 const API_BOOKING_DETAIL_URL = (id) => `${API_BASE_URL}/book/${id}/`;

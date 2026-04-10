@@ -41,7 +41,7 @@ const BookingForm = ({ user, availableRegions, allTrips }) => {
   const { authToken } = useAuth();
   const navigate = useNavigate();
 
-  const API_BASE_URL = import.meta.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
   const API_BOOKING_CREATE_URL = `${API_BASE_URL}/booking/book/`;
 
   useEffect(() => {

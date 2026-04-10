@@ -15,8 +15,7 @@ import WhiteBackground from "/WhiteBackground.jpg";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 
-const API_BASE_URL =
-  import.meta.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 const API_TRIPS_URL = `${API_BASE_URL}/trips/create/`;
 const API_TRIPS_CANCEL_URL = (id) =>
