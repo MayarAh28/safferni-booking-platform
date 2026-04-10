@@ -18,7 +18,8 @@ const AuthProvider = ({ children, navigate }) => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [user, setUser] = useState(null);
 
-  const API_BASE_URL = "http://127.0.0.1:8000";
+  const API_BASE_URL =
+    import.meta.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
 
   const fetchUserProfile = async (token) => {
     try {

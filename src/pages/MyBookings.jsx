@@ -34,7 +34,9 @@ import {
 
 import WhiteBackground from "/WhiteBackground.jpg";
 
-const API_BASE_URL = "http://127.0.0.1:8000/booking";
+const API_BASE_URL =
+  import.meta.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+
 const API_MY_BOOKINGS_URL = `${API_BASE_URL}/me/`;
 const API_BOOKING_DETAIL_URL = (id) => `${API_BASE_URL}/book/${id}/`;
 
@@ -266,7 +268,9 @@ const MyBookings = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bookings.map((booking) => {
-              const departureDate = new Date(booking.trip_details.departure_date);
+              const departureDate = new Date(
+                booking.trip_details.departure_date
+              );
               const isPastTrip = departureDate < new Date();
               const isCancelled = booking.is_cancelled;
               const shouldShowCancelButton = !isPastTrip && !isCancelled;
@@ -327,7 +331,9 @@ const MyBookings = () => {
                         className="text-primary-light"
                       />
                       <span className="font-bold">من:</span>{" "}
-                      {booking.trip_details ? booking.trip_details.origin : "N/A"}
+                      {booking.trip_details
+                        ? booking.trip_details.origin
+                        : "N/A"}
                     </p>
                     <p className="flex items-center gap-2">
                       <FontAwesomeIcon
@@ -353,7 +359,9 @@ const MyBookings = () => {
                         className="text-primary-light"
                       />
                       <span className="font-bold">السعر لكل مقعد:</span>{" "}
-                      {booking.trip_details ? booking.trip_details.price : "N/A"}
+                      {booking.trip_details
+                        ? booking.trip_details.price
+                        : "N/A"}
                     </p>
                     <p className="flex items-center gap-2">
                       <FontAwesomeIcon
@@ -381,7 +389,8 @@ const MyBookings = () => {
                         className="text-primary-light"
                       />
                       <span className="font-bold">مقاعدك:</span>{" "}
-                      {booking.assigned_seats && booking.assigned_seats.length > 0
+                      {booking.assigned_seats &&
+                      booking.assigned_seats.length > 0
                         ? booking.assigned_seats.join(", ")
                         : "لم يتم التعيين بعد"}
                     </p>
@@ -412,13 +421,14 @@ const MyBookings = () => {
                   )}
                   {isCancelled && (
                     <p className="mt-4 text-center text-red-700 font-medium flex items-center justify-center gap-2">
-                      <FontAwesomeIcon icon={faInfoCircle} /> الحجز ملغى ولا يمكن
-                      إلغاؤه مرة أخرى.
+                      <FontAwesomeIcon icon={faInfoCircle} /> الحجز ملغى ولا
+                      يمكن إلغاؤه مرة أخرى.
                     </p>
                   )}
                   {showPastTripMessage && (
                     <p className="mt-4 text-center text-red-700 font-medium flex items-center justify-center gap-2">
-                      <FontAwesomeIcon icon={faInfoCircle} /> هذه الرحلة غادرت بالفعل.
+                      <FontAwesomeIcon icon={faInfoCircle} /> هذه الرحلة غادرت
+                      بالفعل.
                     </p>
                   )}
                 </div>
