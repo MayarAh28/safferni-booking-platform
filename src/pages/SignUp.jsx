@@ -15,6 +15,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
   function handleSignUp(e) {
     e.preventDefault();
@@ -46,7 +47,7 @@ const SignUp = () => {
     };
 
     axios
-      .post("http://127.0.0.1:8000/userManagement/register/", user)
+      .post(`${API_BASE_URL}/userManagement/register/`, user)
       .then((res) => {
         navigate("/login", {
           state: {
